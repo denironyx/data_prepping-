@@ -11,8 +11,6 @@ str(raw_data_subset)
 ##Data transformation
 raw_data_subset$ward <- as.character(raw_data_subset$ward)
 raw_data_subset$dc_name <- as.factor(raw_data_subset$dc_name)
-raw_data_subset$X_gps_latitude <- as.numeric(raw_data_subset$X_gps_latitude)
-raw_data_subset$X_gps_longitude <- as.numeric(raw_data_subset$X_gps_longitude)
 raw_data_subset$machine_gen_settlement_name <- as.character(raw_data_subset$machine_gen_settlement_name)
 raw_data_subset$correct_settlement_name <- as.character(raw_data_subset$correct_settlement_name)
 raw_data_subset$X_uuid <- as.character(raw_data_subset$X_uuid)
@@ -33,13 +31,11 @@ summary(raw_data_subset$other_lga_name)
 ##Converting the csv data to shapefile
 head(raw_data_subset$latitude) ##Easting 
 
-library(raster)
-library(rgdal)
-library(sp)
+
+##The the data type for the coordinate system
 
 new_data <- raw_data_subset
 new_data$latitude <- as.character(new_data$latitude)
-
 new_data$latitude <- as.double(new_data$latitude)
 head(new_data$latitude)
 new_data$longitude <- as.character(new_data$longitude)
